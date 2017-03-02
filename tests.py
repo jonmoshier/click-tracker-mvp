@@ -1,14 +1,16 @@
 import api
 import unittest
-import json
+from flask import json
 
+multiplier=100
 class TestCases(unittest.TestCase):
     def setUp(self):
-        self.app = api.app.test_client() 
-        resp=self.app.post('/analytics?timestamp=1488433206&user=alice&event=click')
-        resp=self.app.post('/analytics?timestamp=1488433206&user=alice&event=impression')
-        resp=self.app.post('/analytics?timestamp=1488433206&user=bob&event=click')
-        resp=self.app.post('/analytics?timestamp=1488433206&user=charles&event=click')
+        self.app = api.app.test_client()
+        for i in range(0,1*multiplier):
+            resp=self.app.post('/analytics?timestamp=1488433206&user=alice&event=click')
+            resp=self.app.post('/analytics?timestamp=1488433206&user=alice&event=impression')
+            resp=self.app.post('/analytics?timestamp=1488433206&user=bob&event=click')
+            resp=self.app.post('/analytics?timestamp=1488433206&user=charles&event=click')
     def tearDown(self):
         pass
     def test_post(self):
@@ -16,10 +18,12 @@ class TestCases(unittest.TestCase):
         assert resp.status_code==204
     def test_get(self):
         resp=self.app.get('/analytics?timestamp=1488433206')
-        data=resp.json
+        data=json.loads(resp.data.decode())
         print(data)
-        # TODO: Fix issue with un-assertable prettified JSON.
-        
+        assert data['clicks']==3*multiplier 
+        assert data['impressions']==1*multiplier
+        assert data['unique_user']==3
+
 
 if __name__ == '__main__':
     unittest.main()

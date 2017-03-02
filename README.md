@@ -6,7 +6,7 @@ Main data store here is an in memory python Dictionary that uses a datetime repr
 Key is converted from a time since epoch to a representation using YYYYMMDDHH.
 
 Example:
-key: 2017030205, value: ('testuser','click')
+key: 2017030205, value: [('testuser','click'), ('testuser', 'impression'),('testuser2','click')]
 
 This allows consumers to GET an hour block of a given Year, Month, Day.
 

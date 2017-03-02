@@ -28,7 +28,9 @@ class TestCases(unittest.TestCase):
         assert data['clicks']==0
         assert data['impressions']==0
         assert data['unique_user']==0
-
-
+    def test_badpost(self):
+        resp=self.app.post('/analytics?timestamp=asdasd&user=&event=ast13t913t_Qwr')
+        print(resp.status_code)
+        
 if __name__ == '__main__':
     unittest.main()

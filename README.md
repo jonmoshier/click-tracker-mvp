@@ -29,5 +29,7 @@ You'll need to install Flask using
 ```
 > pip install flask
 ```
+or 
+`pip install -r requirements`
 
 This is just an experiment and isn't intended to be anything but an execise.

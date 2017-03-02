@@ -1,7 +1,7 @@
 # click-tracker-mvp
-This is Keeping It Stupid Simple MVP for a click tracking application.
+This is a simple MVP for a click tracking application.
 
-Main data store here is an in memory python Dictionary that uses a datetime representation for Keys and a list of (userid, event) tuples as a values.
+The main datastore here is an in-memory python Dictionary that uses a datetime representation for Keys and a list of (userid, event) tuples as a values.
 
 Key is converted from a time since epoch to a representation using YYYYMMDDHH.
 

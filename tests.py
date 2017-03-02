@@ -19,7 +19,6 @@ class TestCases(unittest.TestCase):
     def test_get(self):
         resp=self.app.get('/analytics?timestamp=1488433206')
         data=json.loads(resp.data.decode())
-        print(data)
         assert data['clicks']==3*multiplier 
         assert data['impressions']==1*multiplier
         assert data['unique_user']==3

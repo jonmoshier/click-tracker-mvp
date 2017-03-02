@@ -1,4 +1,6 @@
 # click-tracker-mvp
+
+## About
 This is a simple MVP for a click tracking application.
 
 The main datastore here is an in-memory python Dictionary that uses a datetime representation for Keys and a list of (userid, event) tuples as a values.
@@ -10,6 +12,7 @@ key: 2017030205, value: [('testuser','click'), ('testuser', 'impression'),('test
 
 This allows consumers to GET an hour block of a given Year, Month, Day.
 
+## API
 API has two endpoints:
 ```
 POST /analytics?timestamp={millis_since_epoch}&user={user_id}&event={click|impression}
@@ -25,7 +28,22 @@ GET returns a JSON blob containing:
 }
 ```
 
-You'll need to install Flask using
+## INSTALLATION
+
+#### Recommended
+Install using virtualenv.
+```
+> git clone https://github.com/jonmoshier/click-tracker-mvp
+> cd click-tracker-mvp
+click-tracker-mvp> virtualenv virt
+click-tracker-mvp> source virt/bin/activate
+(virt) click-tracker-mvp> pip install -r requirements.txt
+(virt) click-tracker-mvp> python api.py
+```
+
+#### Custom
+
+You just need to install Flask using
 ```
 > pip install flask
 ```

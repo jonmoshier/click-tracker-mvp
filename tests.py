@@ -18,6 +18,7 @@ class TestCases(unittest.TestCase):
         resp=self.app.get('/analytics?timestamp=1488433206')
         data=resp.json
         print(data)
+        # TODO: Fix issue with un-assertable prettified JSON.
         
 
 if __name__ == '__main__':

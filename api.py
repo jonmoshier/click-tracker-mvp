@@ -16,8 +16,8 @@ def analytics():
     if request.method == 'GET':
         timestamp = int(request.args.get('timestamp'))
         result=getDataFromDictionary(timestamp) #list of tuples
-        return jsonify( unique_user=len(set([(k) for k,v in result]))
-                        clicks=len([(v) for k,v in result if v == click])
+        return jsonify( unique_user=len(set([(k) for k,v in result])),
+                        clicks=len([(v) for k,v in result if v == click]),
                         impressions=len([(v) for k,v in result if v == impression]))
 
 def addDataToDictionary(user_id, timestamp, event):

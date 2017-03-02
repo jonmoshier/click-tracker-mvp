@@ -3,7 +3,7 @@ This is Keeping It Stupid Simple MVP for a click tracking application.
 
 Main data store here is an in memory python Dictionary that uses a datetime representation for Keys and a list of (userid, event) tuples as a values.
 
-Key is converted from a time since epoch to a cleaner using YYYYMMDDHH.
+Key is converted from a time since epoch to a representation using YYYYMMDDHH.
 
 Example:
 key: 2017030205, value: ('testuser','click')

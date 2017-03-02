@@ -1,2 +1,33 @@
 # click-tracker-mvp
-test repo for a click tracking application - caveat emptor
+This is Keeping It Stupid Simple MVP for a click tracking application.
+
+Main data store here is an in memory python Dictionary that uses a datetime representation for Keys and a list of (userid, event) tuples as a values.
+
+Key is converted from a time since epoch to a cleaner using YYYYMMDDHH.
+
+Example:
+key: 2017030205, value: ('testuser','click')
+
+This allows consumers to GET an hour block of a given Year, Month, Day.
+
+API has two endpoints:
+```
+POST /analytics?timestamp={millis_since_epoch}&user={user_id}&event={click|impression}
+GET /analytics?timestamp={millis_since_epoch}
+```
+POST returns a 204 unless there's an issue.
+GET returns a JSON blob containing:
+```
+{
+  "clicks": x,
+  "impressions": y 
+  "unique_user": z
+}
+```
+
+You'll need to install Flask using
+```
+> pip install flask
+```
+
+This is just an experiment and isn't intended to be anything but an execise.

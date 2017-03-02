@@ -34,7 +34,6 @@ def getDataFromDictionary(timestamp):
     return eventDict[key]
     
 def getTimeKey(timestamp):
-    #various checks for valid timestamp
     t=time.gmtime(int(timestamp))
     return "{}{}{}{}".format(t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour)
 

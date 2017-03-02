@@ -9,12 +9,12 @@ impression='impression'
 @app.route('/analytics', methods=['GET','POST'])
 def analytics():
     if request.method == 'POST':
-        timestamp, user_id, event = int(request.args.get('timestamp')), request.args.get('user'), request.args.get('event')
+        timestamp, user_id, event = request.args.get('timestamp'), request.args.get('user'), request.args.get('event')
         addDataToDictionary(user_id, timestamp, event)
         return Response(status=204)
     
     if request.method == 'GET':
-        timestamp = int(request.args.get('timestamp'))
+        timestamp = request.args.get('timestamp')
         result=getDataFromDictionary(timestamp) #list of tuples
         return jsonify( unique_user=len(set([(k) for k,v in result])),
                         clicks=len([(v) for k,v in result if v == click]),

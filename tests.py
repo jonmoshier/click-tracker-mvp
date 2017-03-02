@@ -22,6 +22,12 @@ class TestCases(unittest.TestCase):
         assert data['clicks']==3*multiplier 
         assert data['impressions']==1*multiplier
         assert data['unique_user']==3
+    def test_getempty(self):
+        resp=self.app.get('analytics?timestamp=1488430006')
+        data=json.loads(resp.data.decode())
+        assert data['clicks']==0
+        assert data['impressions']==0
+        assert data['unique_user']==0
 
 
 if __name__ == '__main__':
